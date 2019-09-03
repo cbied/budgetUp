@@ -7,8 +7,6 @@ const express = require('express'),
     { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
 
-
-
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -30,9 +28,14 @@ app.use(session({
     }
 }))
 
-app.post("/register", authController.register);
-app.post("/login", authController.login);
-
+// register user
+app.post("/auth/register", authController.register);
+// login unser
+app.post("/auth/login", authController.login);
+// maintain session
+app.get('/auth/session', authController.session)
+// logout user
+app.post('/auth/logout', authController.logout)
 
 app.listen(SERVER_PORT, () => {
     console.log(`${SERVER_PORT} is listening`)
