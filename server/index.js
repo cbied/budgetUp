@@ -30,7 +30,7 @@ app.use(session({
 
 // register user
 app.post("/auth/register", authController.register);
-// login unser
+// login user
 app.post("/auth/login", authController.login);
 // maintain session
 app.get('/auth/session', authController.session)
