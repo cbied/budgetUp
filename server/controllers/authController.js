@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs')
 async function register(req,res) {
     const db = req.app.get('db'),
         { firstName, lastName, username, email, password } = req.body;
-    console.log('made it')
     const result = await db.get_user([ username ])
     const existingUser = result[0]
 
@@ -52,7 +51,7 @@ const session = async (req,res) => {
     const foundUser = await db.get_user([username]);
     const user = foundUser[0];
     if (req.session) {
-        req.session.user = { isAdmin: user.isadmin, id: user.id, username: user.username };
+        req.session.user = { id: user.id, username: user.username };
     
         return res.send(req.session.user);
     }

@@ -4,7 +4,10 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import Axios from 'axios'
+import Typography from '@material-ui/core/Typography'
+import 'typeface-roboto';
+import { Link } from 'react-router-dom';
+import Axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
 
@@ -72,7 +75,7 @@ return (
             <div className={classes.margin}>
                 <Grid container spacing={1} >
                 <Grid item>
-                    <TextField id="input-with-icon-grid" label="First Name" name='firstName' 
+                    <TextField label="First Name" name='firstName' 
                     onChange={handleChangeFirstName}
                     />
                 </Grid>
@@ -81,7 +84,7 @@ return (
             <div className={classes.margin}>
                 <Grid container spacing={1} >
                 <Grid item>
-                    <TextField id="input-with-icon-grid" label="Last Name" name='lastName' 
+                    <TextField label="Last Name" name='lastName' 
                     onChange={handleChangeLastName}
                     />
                 </Grid>
@@ -90,7 +93,7 @@ return (
             <div className={classes.margin}>
                 <Grid container spacing={1} >
                 <Grid item>
-                    <TextField id="input-with-icon-grid" label="Username" name='username'
+                    <TextField label="Username" name='username'
                     onChange={handleChangeUsername}
                     />
                 </Grid>
@@ -99,7 +102,7 @@ return (
             <div className={classes.margin}>
                 <Grid container spacing={1} >
                 <Grid item>
-                    <TextField type='email' id="input-with-icon-grid" label="Email" name='email' 
+                    <TextField type='email' label="Email" name='email' 
                     onChange={handleChangeEmail}
                     />
                 </Grid>
@@ -108,7 +111,7 @@ return (
             <div className={classes.margin}>
                 <Grid container spacing={1} >
                 <Grid item>
-                    <TextField type='password' id="input-with-icon-grid" label="password" name='password' 
+                    <TextField type='password' label="password" name='password' 
                     onChange={handleChangePassword}
                     />
                 </Grid>
@@ -122,7 +125,9 @@ return (
             </Button>
             </Paper>
 
-            
+            <Typography variant="caption" component="" className='login-register-message'>
+                <Link to='/login'>Already a member? Login here!</Link>
+            </Typography>
             
         </Grid>
 
