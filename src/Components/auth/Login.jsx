@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
@@ -6,6 +7,10 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import 'typeface-roboto';
+
+import { connect } from 'react-redux'
+import { handleSessionData } from '../../redux/authReducer'
+
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
@@ -26,7 +31,7 @@ margin: {
 
 
 
-function Login() {
+function Login(props) {
     const [ username, setUsername ] = useState('');
     const [ password, setPassword ] = useState('');
     
@@ -35,8 +40,10 @@ function Login() {
     const login = () => {
         Axios
             .post('/auth/login', { username, password })
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            .then(res => {
+                console.log(res.data)
+                props.handleSessionData(res.data)})
+            .catch(err => alert('Wrong username or password'))
     }
     
     const handleChangeUsername = e => {
@@ -48,8 +55,10 @@ function Login() {
         setPassword(e.target.value);
     }
 
-
+    console.log(props)
+    console.log(props.user_data)
     return (
+        
     <div className={classes.root}>
         <Grid container spacing={3}>
 
@@ -103,4 +112,9 @@ function Login() {
     )
 }
 
-export default Login
+function mapStateToProps(state) {
+    const { user_data } = state
+    return { user_data }
+}
+
+export default connect(mapStateToProps, { handleSessionData })(Login)
