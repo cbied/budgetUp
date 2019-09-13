@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import Register from './Components/auth/Register';
 import Login from './Components/auth/Login';
-import Dashboard from './Components/Dashboard'
+import Dashboard from './Components//Dashboard/Dashboard'
 
 import { HashRouter as Router } from 'react-router-dom';
 import routes from './routes';
