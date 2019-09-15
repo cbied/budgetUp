@@ -41,7 +41,6 @@ function Login(props) {
         Axios
             .post('/auth/login', { username, password })
             .then(res => {
-                console.log(res.data)
                 props.handleSessionData(res.data)})
             .catch(err => alert('Wrong username or password'))
     }
@@ -55,8 +54,7 @@ function Login(props) {
         setPassword(e.target.value);
     }
 
-    console.log(props)
-    console.log(props.user_data)
+    
     return (
         
     <div className={classes.root}>

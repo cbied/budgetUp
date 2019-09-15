@@ -51,7 +51,7 @@ const session = async (req,res) => {
     const foundUser = await db.get_user([username]);
     const user = foundUser[0];
     if (req.session) {
-        req.session.user = { id: user.id, username: user.username };
+        req.session.user = { id: user.user_id, username: user.username, firstname: user.first_name };
     
         return res.send(req.session.user);
     }

@@ -7,3 +7,10 @@
   justify-content: center;
   /* margin-top: 3rem; */
 }
+
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
