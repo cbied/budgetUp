@@ -1,26 +1,13 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import Summary from './Summary'
+import Nav from './Shared/Nav'
 
-
-const Dashboard = (props) => {
-    console.log(props.user_data)
+const Dashboard = () => {
     return (
         <div>
-            <header className='header'>
-            <h1>Dashboard</h1>
-            <h3>hello { props.user_data.username }</h3>
-            </header>
-            
-            <Summary />
+            <Nav />
         </div>
     );
 }
 
-function mapStateToProps(state) {
-    const { user_data } = state
-    return { user_data }
-}
-
-export default connect(mapStateToProps)(Dashboard);
+export default Dashboard;

@@ -30,12 +30,13 @@ const [ firstName, setFirstName ] = useState('');
 const [ lastName, setLastName ] = useState('');
 const [ email, setEmail ] = useState('');
 const [ password, setPassword ] = useState('');
+const [ balance, setChangeStartBalance] = useState(0)
 
 const classes = useStyles();
 
 const register = () => {
     Axios
-        .post('/auth/register', { username, password, firstName, lastName, email })
+        .post('/auth/register', { username, password, firstName, lastName, email, balance })
         .then(res => console.log(res))
         .catch(err => console.log(err))
 }
@@ -58,6 +59,10 @@ const handleChangeEmail = e => {
 
 const handleChangePassword = e => {
     setPassword(e.target.value);
+}
+
+const handleChangeStartBalance = e => {
+    setChangeStartBalance(e.target.value)
 }
 
 
@@ -113,6 +118,15 @@ return (
                 <Grid item>
                     <TextField type='password' label="password" name='password' 
                     onChange={handleChangePassword}
+                    />
+                </Grid>
+                </Grid>
+            </div>
+            <div className={classes.margin}>
+                <Grid container spacing={1} >
+                <Grid item>
+                    <TextField type='decimal' label="startingBalance" name='startingBalance' value={balance}
+                    onChange={handleChangeStartBalance}
                     />
                 </Grid>
                 </Grid>

@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs')
 
 async function register(req,res) {
     const db = req.app.get('db'),
-        { firstName, lastName, username, email, password } = req.body;
+        { firstName, lastName, username, email, password, balance } = req.body;
     const result = await db.get_user([ username ])
     const existingUser = result[0]
 
@@ -12,7 +12,7 @@ async function register(req,res) {
 
     const salt = bcrypt.genSaltSync(12)
     const hash = bcrypt.hashSync(password, salt)
-    const registeredUser = await db.register_user([ username, hash, firstName, lastName, email ])
+    const registeredUser = await db.register_user([ username, hash, firstName, lastName, email, balance ])
     
     const user = registeredUser[0]
     if(user) {
@@ -39,7 +39,7 @@ async function login(req,res) {
         return res.status(403).send('Incorrect password');
     }
 
-    req.session.user = { id: user.user_id, username: user.username, firstname: user.first_name};
+    req.session.user = { id: user.user_id, username: user.username, firstname: user.first_name, balance: user.balance};
         
     return res.send(req.session.user);
 }

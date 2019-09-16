@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
-import { Table, MenuItem, TextField } from '@material-ui/core';
+import { Table, TableBody, TableCell, TableHead, TableRow, Paper, MenuItem, TextField, Grid } from '@material-ui/core';
+
+import TableBreakdown from './TableBreakdown';
+import StartingBalance from '../Shared/StartingBalance'
 
 
 const Summary = () => {
-    const [ startingBalance, setStartingBalance ] = useState('');
-
-    const StartingBalanceHandleChange = (e) => {
-        setStartingBalance(e.target.value)
-    }
+    
 
     return (
         <div>
             {/* Starting Balance */}
-            <TextField
-            label="starting balance"
-            value={startingBalance}
-            onChange={e => StartingBalanceHandleChange(e)}
-            type='number'
-            margin="normal"
-            variant="filled"
-            />
+            <StartingBalance />
             {/* Add Expense or Income Category */}
             {/* Delete Expense or Income Category */}
 
@@ -28,6 +20,7 @@ const Summary = () => {
             {/* Display saved this month */}
 
             {/* Table */}
+            <TableBreakdown />
             {/* Expenses Col: Planned, Actual, Diff. */}
             {/* Income Col: Planned, Actual, Diff. */}
         </div>
